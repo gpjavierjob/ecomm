@@ -1,17 +1,14 @@
 import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
-import cartImage from "/carrito.svg";
+import { FaShoppingCart } from "react-icons/fa";
 
 function CartWidget() {
   const badgeClassName =
-    "position-absolute top-0 start-100 translate-middle p-2 border border-light rounded-circle";
+    "position-absolute top-0 start-100 translate-middle border border-light";
   return (
-    <div className="d-flex justify-content-start justify-content-lg-end me-1">
-    <Button className="position-relative" variant="primary">
-      <img src={cartImage} alt="carrito de compras" />
-      <Badge className={badgeClassName} bg="danger">0</Badge>
+    <div className="position-relative m-2 p-0">
+      <FaShoppingCart size="30px" alt="carrito de compras"/>
+      <Badge className={badgeClassName} bg="danger" pill>0</Badge>
       <span className="visually-hidden">cantidad de productos en el carrito</span>
-    </Button>
     </div>
   );
 }

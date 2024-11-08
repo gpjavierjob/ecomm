@@ -3,7 +3,7 @@ import NavigationBar from "./components/NavigationBar";
 import ItemListContainer from "./components/ItemListContainer";
 
 function App() {
-  const greetings = "¡Bienvenidos a la tienda!";
+  const greetings = "¡Bienvenidos a nuestra tienda para mascotas!";
 
   return (
     <>

@@ -1,9 +1,9 @@
 import Image from 'react-bootstrap/Image';
 
-function Logo() {
+function Logo(props) {
   return (
     <>
-      <Image src="/logo.png" alt="Logo" width="50"/>
+      <Image className={props.className} src="/PetStore-Logo.svg" alt="Logo" width="50"/>
     </>
   )
 }
