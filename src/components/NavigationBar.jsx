@@ -12,17 +12,17 @@ function NavigationBar() {
         <Navbar.Brand className="flex-fill" href="/">
           <Container className="d-flex flex-row align-items-center">
             <Logo />
-            <span>Pet Store</span>
+            <span>Mercado</span>
           </Container>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto align-items-center">
             <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/alimentos">Alimentos</Nav.Link>
-            <Nav.Link href="/medicamentos">Medicamentos</Nav.Link>
-            <Nav.Link href="/accesorios">Accesorios</Nav.Link>
-            <Nav.Link href="/juguetes">Juguetes</Nav.Link>
+            <Nav.Link href="/category/frutas">Frutas</Nav.Link>
+            <Nav.Link href="/category/verduras">Verduras</Nav.Link>
+            <Nav.Link href="/category/legumbres">Legumbres</Nav.Link>
+            <Nav.Link href="/category/juguetes">Juguetes</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse>

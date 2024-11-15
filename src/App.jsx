@@ -6,12 +6,13 @@ import Layout from "./components/Layout";
 import ItemListContainer from "./components/ItemListContainer";
 import CartWidget from "./components/CartWidget";
 import NoPage from "./components/NoPage";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
-  const homeTitle = "¡Bienvenidos a nuestra tienda para mascotas!";
-  const foodTitle = "Alimentos";
-  const drugsTitle = "Medicamentos";
-  const accessoriesTitle = "Accesorios";
+  const homeTitle = "¡Bienvenidos a nuestro mercado online!";
+  const fruitsTitle = "Frutas";
+  const vegetablesTitle = "Vegetales";
+  const legumesTitle = "Legumbres";
   const toysTitle = "Juguetes";
 
   return (
@@ -24,26 +25,33 @@ function App() {
               element={<ItemListContainer title={homeTitle} category="" />}
             />
             <Route
-              path="/alimentos"
-              element={<ItemListContainer title={foodTitle} category="alimentos" />}
+              path="/category/frutas"
+              element={
+                <ItemListContainer title={fruitsTitle} category="frutas" />
+              }
             />
             <Route
-              path="/medicamentos"
-              element={<ItemListContainer title={drugsTitle} category="medicamentos" />}
-            />
-            <Route
-              path="/accesorios"
+              path="/category/verduras"
               element={
                 <ItemListContainer
-                  title={accessoriesTitle}
-                  category="accesorios"
+                  title={vegetablesTitle}
+                  category="verduras"
                 />
               }
             />
             <Route
-              path="/juguetes"
-              element={<ItemListContainer title={toysTitle} category="juguetes" />}
+              path="/category/legumbres"
+              element={
+                <ItemListContainer title={legumesTitle} category="legumbres" />
+              }
             />
+            <Route
+              path="/category/juguetes"
+              element={
+                <ItemListContainer title={toysTitle} category="juguetes" />
+              }
+            />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="/carrito" element={<CartWidget />} />
           </Route>
           <Route path="*" element={<NoPage />} />
