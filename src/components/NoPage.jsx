@@ -1,9 +1,15 @@
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function NoPage() {
   return (
-    <Card className="flex-row align-items-center m-3">
-      <Card.Img variant="top" src="/vite.svg" style={{ width: "18rem" }} />
+    <Card className="flex-row flex-wrap justify-content-center align-items-start m-3">
+      <Card.Img
+        className="align-self-stretch"
+        variant="top"
+        src="/campo-de-lechugas.jpg"
+        style={{ width: "18rem" }}
+      />
       <Card.Body style={{ width: "18rem" }}>
         <Card.Title>Error 404: ¡Página Perdida en el Huerto!</Card.Title>
         <Card.Text>
@@ -14,12 +20,15 @@ function NoPage() {
           pierden entre las filas de lechugas!
         </Card.Text>
         <Card.Text>
-          Mientras intentamos encontrar esta página, vuelve a la Página
-          Principal y explora otros productos frescos.
+          Mientras intentamos encontrar esta página, vuelve a la
+          <Link to="/" className="px-1">
+            Página Principal
+          </Link>
+          y explora otros productos frescos.
         </Card.Text>
         <Card.Text>
           Contacta con nosotros si necesitas ayuda (prometemos no responder con
-          un pepino 🥒)
+          un pepino 🥒).
         </Card.Text>
         <Card.Text>
           Gracias por tu paciencia. En nuestra verdulería digital, hasta las

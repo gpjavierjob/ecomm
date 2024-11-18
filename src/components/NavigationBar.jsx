@@ -7,12 +7,12 @@ import CartWidget from "./CartWidget";
 
 function NavigationBar() {
   return (
-    <Navbar expand="md" className="bg-body-tertiary">
+    <Navbar expand="md" className="bg-success-subtle text-success-emphasis">
       <Container className="justify-content-start">
         <Navbar.Brand className="flex-fill" href="/">
           <Container className="d-flex flex-row align-items-center">
             <Logo />
-            <span>Mercado</span>
+            <span className="ps-2">Verdulería</span>
           </Container>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,7 +22,7 @@ function NavigationBar() {
             <Nav.Link href="/category/frutas">Frutas</Nav.Link>
             <Nav.Link href="/category/verduras">Verduras</Nav.Link>
             <Nav.Link href="/category/legumbres">Legumbres</Nav.Link>
-            <Nav.Link href="/category/juguetes">Juguetes</Nav.Link>
+            <Nav.Link href="/category/condimentos">Condimentos</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse>

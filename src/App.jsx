@@ -9,11 +9,11 @@ import NoPage from "./components/NoPage";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
-  const homeTitle = "¡Bienvenidos a nuestro mercado online!";
+  const homeTitle = "Todos los productos";
   const fruitsTitle = "Frutas";
-  const vegetablesTitle = "Vegetales";
+  const vegetablesTitle = "Verduras";
   const legumesTitle = "Legumbres";
-  const toysTitle = "Juguetes";
+  const seasoningsTitle = "Condimentos";
 
   return (
     <>
@@ -46,15 +46,15 @@ function App() {
               }
             />
             <Route
-              path="/category/juguetes"
+              path="/category/condimentos"
               element={
-                <ItemListContainer title={toysTitle} category="juguetes" />
+                <ItemListContainer title={seasoningsTitle} category="condimentos" />
               }
             />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="/carrito" element={<CartWidget />} />
+            <Route path="*" element={<NoPage />} />
           </Route>
-          <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
     </>
