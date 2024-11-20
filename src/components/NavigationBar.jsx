@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from "react-bootstrap/Navbar";
 
 import Logo from "./Logo";
+import NavLinkList from "./NavLinkList";
 import CartWidget from "./CartWidget";
 
 function NavigationBar() {
@@ -18,11 +19,7 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto align-items-center">
-            <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/category/frutas">Frutas</Nav.Link>
-            <Nav.Link href="/category/verduras">Verduras</Nav.Link>
-            <Nav.Link href="/category/legumbres">Legumbres</Nav.Link>
-            <Nav.Link href="/category/condimentos">Condimentos</Nav.Link>
+            <NavLinkList />
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse>

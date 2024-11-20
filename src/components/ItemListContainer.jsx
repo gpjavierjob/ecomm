@@ -1,7 +1,7 @@
 import Stack from 'react-bootstrap/Stack';
 import { useState, useEffect } from "react";
 
-import { getDataByCategory } from "../data/data";
+import { getProductByCategory } from "../data/data";
 import ItemList from "./ItemList";
 
 function ItemListContainer({ title, category }) {
@@ -9,7 +9,7 @@ function ItemListContainer({ title, category }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getDataByCategory(category).then((data) => {
+    getProductByCategory(category).then((data) => {
       setData(data);
       setLoading(false);
     });

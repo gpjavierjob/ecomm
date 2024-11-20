@@ -2,7 +2,6 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 function Item({ id, name, price, uom, category, image }) {
-  console.log(`Item - id: ${id}`);
   return (
     <Link to={`/item/${id}`}>
       <Card border="success-subtle" key={id} style={{ width: "18rem" }}>

@@ -2,7 +2,7 @@ import Stack from "react-bootstrap/Stack";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { getDataById } from "../data/data";
+import { getProduct } from "../data/data";
 import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer(props) {
@@ -12,7 +12,7 @@ function ItemDetailContainer(props) {
   console.log(`ItemDetailContainer - id: ${id}`);
 
   useEffect(() => {
-    getDataById(id).then((data) => {
+    getProduct(id).then((data) => {
       setData(data);
       setLoading(false);
     });
