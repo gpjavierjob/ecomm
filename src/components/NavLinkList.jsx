@@ -4,7 +4,6 @@ import CategoriesContext from "./CategoriesContext";
 
 function NavLinkList() {
   const categories = useContext(CategoriesContext);
-  console.log(categories);
   return (
     <>
       <Nav.Link key={0} href="/" text="Inicio" />

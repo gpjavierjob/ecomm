@@ -8,7 +8,7 @@ function Item({ id, name, price, uom, category, image }) {
         <Card.Img variant="top" src={image} />
         <Card.Body className="text-center">
           <Card.Title>{name}</Card.Title>
-          <Card.Subtitle>{category}</Card.Subtitle>
+          <Card.Subtitle>{category.name}</Card.Subtitle>
           <Card.Text>
             <span>${price.toFixed(2)}</span>
             <span className="p-2">-</span>

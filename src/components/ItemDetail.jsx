@@ -13,7 +13,7 @@ function ItemDetail({ id, name, description, price, uom, category, image }) {
         style={{ width: "15rem" }}
       >
         <Card.Title>{name}</Card.Title>
-        <Card.Subtitle>{category}</Card.Subtitle>
+        <Card.Subtitle>{category.name}</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
         <Card.Text>
           <span>${price.toFixed(2)}</span>
