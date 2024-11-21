@@ -14,7 +14,6 @@ function ItemListContainer({ title, category }) {
   useEffect(() => {
     getProductByCategory(category).then((data) => {
       setData(data);
-      console.log(!data);
       setLoading(false);
     });
   }, []);
