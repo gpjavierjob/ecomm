@@ -1,15 +1,17 @@
 import Stack from "react-bootstrap/Stack";
+import Alert from "react-bootstrap/Alert";
+import { BsExclamationCircle } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { getProduct } from "../data/data";
 import ItemDetail from "./ItemDetail";
+import Loading from "./Loading";
 
 function ItemDetailContainer(props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  console.log(`ItemDetailContainer - id: ${id}`);
 
   useEffect(() => {
     getProduct(id).then((data) => {
@@ -24,9 +26,19 @@ function ItemDetailContainer(props) {
       direction="horizontal"
     >
       {loading ? (
-        <h3>Obteniendo los datos...</h3>
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <Loading />
+          <h6>Obteniendo los datos...</h6>
+        </div>
       ) : !data ? (
-        <h3>No se encontró el producto.</h3>
+        <Alert
+          className="d-flex flex-row"
+          key="danger"
+          variant="danger"
+        >
+          <BsExclamationCircle className="w-25 h-100" />
+          <h6 className="ps-2">No se encontró el producto.</h6>
+        </Alert>
       ) : (
         <ItemDetail {...data} />
       )}

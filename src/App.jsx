@@ -9,6 +9,7 @@ import ItemListContainer from "./components/ItemListContainer";
 import CartWidget from "./components/CartWidget";
 import NoPage from "./components/NoPage";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import Loading from "./components/Loading";
 
 import { getCategories } from "./data/data";
 
@@ -28,7 +29,10 @@ function App() {
   return (
     <>
       {loading ? (
-        <h2>Cargando la aplicación...</h2>
+        <div className="d-flex flex-column justify-content-center align-items-center vh-100">
+          <Loading />
+          <h6>Cargando la aplicación...</h6>
+        </div>
       ) : !categories ? (
         <h2>Imposible cargar la aplicación. Reinténtelo más tarde.</h2>
       ) : (

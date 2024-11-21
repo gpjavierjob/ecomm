@@ -1,8 +1,11 @@
 import Stack from 'react-bootstrap/Stack';
+import Alert from "react-bootstrap/Alert";
+import { BsInfoCircle } from "react-icons/bs";
 import { useState, useEffect } from "react";
 
 import { getProductByCategory } from "../data/data";
 import ItemList from "./ItemList";
+import Loading from "./Loading";
 
 function ItemListContainer({ title, category }) {
   const [data, setData] = useState([]);
@@ -11,6 +14,7 @@ function ItemListContainer({ title, category }) {
   useEffect(() => {
     getProductByCategory(category).then((data) => {
       setData(data);
+      console.log(!data);
       setLoading(false);
     });
   }, []);
@@ -24,9 +28,15 @@ function ItemListContainer({ title, category }) {
         gap={3}
       >
         {loading ? (
-          <h3>Obteniendo los datos...</h3>
-        ) : !data ? (
-          <h3>La lista está vacía.</h3>
+          <div className="d-flex flex-column justify-content-center align-items-center">
+            <Loading />
+            <h6>Obteniendo los datos...</h6>
+          </div>
+        ) : data.length == 0 ? (
+          <Alert className="d-flex flex-row" key="info" variant="info">
+            <BsInfoCircle className="w-25 h-100" />
+            <h6 className="ps-2">La lista está vacía.</h6>
+          </Alert>
         ) : (
           <ItemList data={data} />
         )}
