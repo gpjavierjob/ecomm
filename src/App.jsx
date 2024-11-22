@@ -6,7 +6,7 @@ import { AppContextProvider } from "./components/AppContext";
 import Layout from "./components/Layout";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
-import CartWidget from "./components/CartWidget";
+import Cart from "./components/Cart";
 import NoPage from "./components/NoPage";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
               <Route index element={<ItemListContainer />} />
               <Route path="/category/:tag" element={<ItemListContainer />} />
               <Route path="/item/:id" element={<ItemDetailContainer />} />
-              <Route path="/carrito" element={<CartWidget />} />
+              <Route path="/carrito" element={<Cart />} />
               <Route path="*" element={<NoPage />} />
             </Route>
           </Routes>

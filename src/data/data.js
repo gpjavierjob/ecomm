@@ -34,6 +34,7 @@ const products = [
       name: "Frutas",
       tag: "frutas",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/472481-1200-auto?v=636694698370130000&width=1200&height=auto&aspect=true",
   },
@@ -49,6 +50,7 @@ const products = [
       name: "Frutas",
       tag: "frutas",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/320502-1200-auto?v=636391554454870000&width=1200&height=auto&aspect=true",
   },
@@ -64,6 +66,7 @@ const products = [
       name: "Frutas",
       tag: "frutas",
     },
+    stock: 10,
     image:
       "https://discouy.vtexassets.com/arquivos/ids/1815287-1200-auto?v=638576060182400000&width=1200&height=auto&aspect=true",
   },
@@ -79,6 +82,7 @@ const products = [
       name: "Frutas",
       tag: "frutas",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/181777-1200-auto?v=636383419335130000&width=1200&height=auto&aspect=true",
   },
@@ -94,6 +98,7 @@ const products = [
       name: "Verduras",
       tag: "verduras",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/698610-1200-auto?v=637871997724330000&width=1200&height=auto&aspect=true",
   },
@@ -109,6 +114,7 @@ const products = [
       name: "Verduras",
       tag: "verduras",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/339349-1200-auto?v=636393041930400000&width=1200&height=auto&aspect=true",
   },
@@ -124,6 +130,7 @@ const products = [
       name: "Verduras",
       tag: "verduras",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/472800-1200-auto?v=636695562251270000&width=1200&height=auto&aspect=true",
   },
@@ -139,6 +146,7 @@ const products = [
       name: "Verduras",
       tag: "verduras",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/450976-1200-auto?v=636577194077270000&width=1200&height=auto&aspect=true",
   },
@@ -154,6 +162,7 @@ const products = [
       name: "Legumbres",
       tag: "legumbres",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/783041-1200-auto?v=638206690659400000&width=1200&height=auto&aspect=true",
   },
@@ -169,6 +178,7 @@ const products = [
       name: "Legumbres",
       tag: "legumbres",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/203716-1200-auto?v=636383657478900000&width=1200&height=auto&aspect=true",
   },
@@ -184,6 +194,7 @@ const products = [
       name: "Legumbres",
       tag: "legumbres",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/432623-1200-auto?v=636513312382800000&width=1200&height=auto&aspect=true",
   },
@@ -199,6 +210,7 @@ const products = [
       name: "Legumbres",
       tag: "legumbres",
     },
+    stock: 10,
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/432624-1200-auto?v=636513312385730000&width=1200&height=auto&aspect=true",
   },
@@ -214,6 +226,7 @@ const products = [
       name: "Condimentos",
       tag: "condimentos",
     },
+    stock: 10,
     image:
       "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F167020%2FCONDIMENTO-OREGANO-LA-MANCHEG-SOBRE-5000-G-1-6836.jpg%3Fv%3D637093979538330000",
   },
@@ -229,6 +242,7 @@ const products = [
       name: "Condimentos",
       tag: "condimentos",
     },
+    stock: 10,
     image:
       "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F203404%2FAzafran-Molido-4-Sobres-Safrina-125-Ml-1-6912.jpg%3Fv%3D637526825121500000",
   },
@@ -244,6 +258,7 @@ const products = [
       name: "Condimentos",
       tag: "condimentos",
     },
+    stock: 10,
     image:
       "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F691331%2FCondimento-Curcuma-Monte-Cudine-40-G-1-39220.jpg%3Fv%3D638354325939830000",
   },
@@ -259,6 +274,7 @@ const products = [
       name: "Condimentos",
       tag: "condimentos",
     },
+    stock: 10,
     image:
       "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F374679%2FCondimento-Chimichurri-Monte-Cudine-Frasco-70-G-1-6901.jpg%3Fv%3D637897813492300000",
   },
