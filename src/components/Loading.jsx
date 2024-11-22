@@ -1,9 +1,9 @@
 import "./Loading.css";
 
-function Loading() {
+function Loading({ width }) {
   return (
     /* From Uiverse.io by abrahamcalsin */
-    <div className="dot-spinner">
+    <div className="dot-spinner" style={width ? { width: `${width}` } : {}}>
       <div className="dot-spinner__dot"></div>
       <div className="dot-spinner__dot"></div>
       <div className="dot-spinner__dot"></div>
