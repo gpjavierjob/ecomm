@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { AppContext } from "./AppContext";
 
@@ -12,17 +14,17 @@ function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
   };
 
   const increaseQuantity = () => {
-    addItemToCart({ id }, 1);
+    addItemToCart({ id, stock }, 1);
   };
 
   return (
-    <div className="d-flex flex-row flex-wrap">
-      <div>
-        <Image src={image} />
-      </div>
-      <div>{name}</div>
-      <div>{price.toFixed(2)}</div>
-      <div>
+    <Row className="align-items-center border-bottom border-success-subtle">
+      <Col md={2} className="text-center">
+        <Image src={image} style={{ height: 100 }} className="img-fluid" />
+      </Col>
+      <Col md={3} className="text-center">{name}</Col>
+      <Col md={2} className="text-center">{price.toFixed(2)}</Col>
+      <Col md={3} className="text-center">
         <Button size="sm" onClick={decreaseQuantity} disabled={quantity <= 0}>
           -
         </Button>
@@ -34,9 +36,9 @@ function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
         >
           +
         </Button>
-      </div>
-      <div>{(price * quantity).toFixed(2)}</div>
-    </div>
+      </Col>
+      <Col md={2} className="text-center">{(price * quantity).toFixed(2)}</Col>
+    </Row>
   );
 }
 

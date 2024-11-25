@@ -32,8 +32,8 @@ function Item({ id, name, price, uom, category, stock, image }) {
             <span>${price.toFixed(2)}</span>
             <span className="p-2">-</span>
             <span>{uom}</span>
-            <div>Stock: {stock}</div>
           </Card.Text>
+          <Card.Text>Stock: {stock}</Card.Text>
         </Card.Body>
       </Link>
       <Card.Footer className="d-flex flex-row align-items-center">

@@ -1,12 +1,11 @@
 import Stack from "react-bootstrap/Stack";
-import Alert from "react-bootstrap/Alert";
-import { BsExclamationCircle } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { getProduct } from "../data/data";
 import ItemDetail from "./ItemDetail";
 import Loading from "./Loading";
+import { Error } from "./Alerts";
 
 function ItemDetailContainer(props) {
   const [data, setData] = useState([]);
@@ -31,14 +30,7 @@ function ItemDetailContainer(props) {
           <h6>Obteniendo los datos...</h6>
         </div>
       ) : !data ? (
-        <Alert
-          className="d-flex flex-row"
-          key="danger"
-          variant="danger"
-        >
-          <BsExclamationCircle className="w-25 h-100" />
-          <h6 className="ps-2">No se encontró el producto.</h6>
-        </Alert>
+        <Error msg="No se encontró el producto." />
       ) : (
         <ItemDetail {...data} />
       )}

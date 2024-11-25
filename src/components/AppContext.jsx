@@ -16,10 +16,10 @@ function AppContextProvider({ children }) {
       if (existingItem) {
         // Ya existe este ítem en el carrito por lo que se aumenta su cantidad
         // pero sólo si no sobrepasa el stock
-        if (existingItem.quantity <= item.stock) {
-          existingItem.quantity += quantity;
-        }
-        return prevItems;
+        if (existingItem.quantity + quantity > item.stock) return prevItems;
+        existingItem.quantity += quantity;
+        // Para que el estado note que ocurrió un cambio
+        return prevItems.flat();
       } else {
         // Adicionar el ítem porque no existe en el carrito
         return [...prevItems, { ...item, quantity: quantity }];
@@ -39,9 +39,10 @@ function AppContextProvider({ children }) {
       const cartItem = prevItems[cartItemIndex];
       // Si la cantidad del ítem es 1, se elimina del carrito
       if (cartItem.quantity == 1) return prevItems.toSpliced(cartItemIndex, 1);
-      // Se disminuye en 1 la cantidad del ítem
+      // En caso contrario, se disminuye en 1 la cantidad del ítem
       cartItem.quantity -= 1;
-      return prevItems;
+      // Para que el estado note que ocurrió un cambio
+      return prevItems.flat();
     });
   };
 

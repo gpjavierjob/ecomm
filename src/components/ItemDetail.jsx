@@ -47,8 +47,8 @@ function ItemDetail({
           <span>${price.toFixed(2)}</span>
           <span className="p-2">-</span>
           <span>{uom}</span>
-          <div>Stock: {stock}</div>
         </Card.Text>
+        <Card.Text>Stock: {stock}</Card.Text>
         <Card.Text className="d-flex flex-row align-items-center">
           <Button
             className="me-auto"
