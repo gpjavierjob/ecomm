@@ -13,7 +13,7 @@ function NavigationBar() {
         <Navbar.Brand className="flex-fill" href="/">
           <Container className="d-flex flex-row align-items-center">
             <Logo />
-            <span className="ps-2">Verdulería</span>
+            <span className="ps-2">Verdulería.uy</span>
           </Container>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
