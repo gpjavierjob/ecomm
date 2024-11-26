@@ -214,70 +214,70 @@ const products = [
     image:
       "https://jumboargentina.vtexassets.com/arquivos/ids/432624-1200-auto?v=636513312385730000&width=1200&height=auto&aspect=true",
   },
-  // {
-  //   id: 13,
-  //   name: "Orégano",
-  //   description:
-  //     "Orégano seco para condimentar tus comidas con un toque mediterráneo. Precio por 50 g.",
-  //   price: 124,
-  //   uom: "50 g",
-  //   category: {
-  //     id: 4,
-  //     name: "Condimentos",
-  //     tag: "condimentos",
-  //   },
-  //   stock: 10,
-  //   image:
-  //     "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F167020%2FCONDIMENTO-OREGANO-LA-MANCHEG-SOBRE-5000-G-1-6836.jpg%3Fv%3D637093979538330000",
-  // },
-  // {
-  //   id: 14,
-  //   name: "Azafrán",
-  //   description:
-  //     "Azafrán de alta calidad, perfecto para dar color y sabor a tus recetas. Precio por 125 ml.",
-  //   price: 279,
-  //   uom: "125 ml",
-  //   category: {
-  //     id: 4,
-  //     name: "Condimentos",
-  //     tag: "condimentos",
-  //   },
-  //   stock: 10,
-  //   image:
-  //     "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F203404%2FAzafran-Molido-4-Sobres-Safrina-125-Ml-1-6912.jpg%3Fv%3D637526825121500000",
-  // },
-  // {
-  //   id: 15,
-  //   name: "Cúrcuma",
-  //   description:
-  //     "Cúrcuma aromática, ideal para sazonar tus platos con un toque exótico. Precio por 40 g.",
-  //   price: 117,
-  //   uom: "40 g",
-  //   category: {
-  //     id: 4,
-  //     name: "Condimentos",
-  //     tag: "condimentos",
-  //   },
-  //   stock: 10,
-  //   image:
-  //     "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F691331%2FCondimento-Curcuma-Monte-Cudine-40-G-1-39220.jpg%3Fv%3D638354325939830000",
-  // },
-  // {
-  //   id: 16,
-  //   name: "Chimichurri",
-  //   description:
-  //     "Chimichurri clásico para aderezar carnes y acompañar tus comidas. Precio por 70 g.",
-  //   price: 143,
-  //   uom: "70 g",
-  //   category: {
-  //     id: 4,
-  //     name: "Condimentos",
-  //     tag: "condimentos",
-  //   },
-  //   stock: 10,
-  //   image:
-  //     "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F374679%2FCondimento-Chimichurri-Monte-Cudine-Frasco-70-G-1-6901.jpg%3Fv%3D637897813492300000",
-  // },
+  {
+    id: 13,
+    name: "Orégano",
+    description:
+      "Orégano seco para condimentar tus comidas con un toque mediterráneo. Precio por 50 g.",
+    price: 124,
+    uom: "50 g",
+    category: {
+      id: 4,
+      name: "Condimentos",
+      tag: "condimentos",
+    },
+    stock: 10,
+    image:
+      "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F167020%2FCONDIMENTO-OREGANO-LA-MANCHEG-SOBRE-5000-G-1-6836.jpg%3Fv%3D637093979538330000",
+  },
+  {
+    id: 14,
+    name: "Azafrán",
+    description:
+      "Azafrán de alta calidad, perfecto para dar color y sabor a tus recetas. Precio por 125 ml.",
+    price: 279,
+    uom: "125 ml",
+    category: {
+      id: 4,
+      name: "Condimentos",
+      tag: "condimentos",
+    },
+    stock: 10,
+    image:
+      "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F203404%2FAzafran-Molido-4-Sobres-Safrina-125-Ml-1-6912.jpg%3Fv%3D637526825121500000",
+  },
+  {
+    id: 15,
+    name: "Cúrcuma",
+    description:
+      "Cúrcuma aromática, ideal para sazonar tus platos con un toque exótico. Precio por 40 g.",
+    price: 117,
+    uom: "40 g",
+    category: {
+      id: 4,
+      name: "Condimentos",
+      tag: "condimentos",
+    },
+    stock: 10,
+    image:
+      "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F691331%2FCondimento-Curcuma-Monte-Cudine-40-G-1-39220.jpg%3Fv%3D638354325939830000",
+  },
+  {
+    id: 16,
+    name: "Chimichurri",
+    description:
+      "Chimichurri clásico para aderezar carnes y acompañar tus comidas. Precio por 70 g.",
+    price: 143,
+    uom: "70 g",
+    category: {
+      id: 4,
+      name: "Condimentos",
+      tag: "condimentos",
+    },
+    stock: 10,
+    image:
+      "https://tatauy.vtexassets.com/unsafe/0x0/center/middle/https%3A%2F%2Ftatauy.vtexassets.com%2Farquivos%2Fids%2F374679%2FCondimento-Chimichurri-Monte-Cudine-Frasco-70-G-1-6901.jpg%3Fv%3D637897813492300000",
+  },
 ];
 
 const _getCategories = () => categories;
