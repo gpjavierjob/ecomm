@@ -7,8 +7,8 @@ import { AppContext } from "./AppContext";
 
 function Item({ id, name, price, uom, category, stock, image }) {
   const [quantity, setQuantity] = useState(1);
-  const { addItemToCart } = useContext(AppContext);
-
+  const { cart } = useContext(AppContext);
+  
   const decreaseQuantity = () => {
     setQuantity((quantity) => quantity - 1);
   };
@@ -18,7 +18,8 @@ function Item({ id, name, price, uom, category, stock, image }) {
   };
 
   const comprar = () => {
-    addItemToCart({ id, name, price, uom, category, stock, image }, quantity);
+    cart.addItem({ id, name, price, uom, category, stock, image }, quantity);
+    setQuantity(1);
   };
 
   return (

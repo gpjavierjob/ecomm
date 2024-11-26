@@ -5,9 +5,12 @@ const AppContext = createContext([]);
 
 function AppContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const [flashMessage, setFlashMessage] = useState(null);
+
+  const getItems = () => cartItems;
 
   // Agregar un ítem al carrito
-  const addItemToCart = (item, quantity) => {
+  const addItem = (item, quantity) => {
     setCartItems((prevItems) => {
       // Comprobar si este ítem ya fue adicionado al carrito previamente
       const existingItem = prevItems.find(
@@ -28,7 +31,7 @@ function AppContextProvider({ children }) {
   };
 
   // Eliminar un ítem del carrito
-  const removeItemFromCart = (id) => {
+  const removeItem = (id) => {
     setCartItems((prevItems) => {
       // Comprobar si este ítem ya existe en el carrito
       const cartItemIndex = prevItems.findIndex(
@@ -47,7 +50,7 @@ function AppContextProvider({ children }) {
   };
 
   // Vaciar el carrito
-  const clearCart = () => {
+  const clear = () => {
     setCartItems([]);
   };
 
@@ -59,15 +62,32 @@ function AppContextProvider({ children }) {
   const getQuantity = () =>
     cartItems.reduce((quantity, item) => quantity + item.quantity, 0);
 
+  const getMessage = () => flashMessage;
+  const setMessage = (text, variant) =>
+    setFlashMessage((oldMsg) => {
+      return { text, variant, visible: true };
+    });
+  const hideMessage = () =>
+    setFlashMessage((oldMsg) => {
+      return oldMsg && { ...oldMsg, visible: false };
+    });
+
   return (
     <AppContext.Provider
       value={{
-        cartItems,
-        addItemToCart,
-        removeItemFromCart,
-        clearCart,
-        getTotal,
-        getQuantity,
+        cart: {
+          getItems,
+          addItem,
+          removeItem,
+          clear,
+          getTotal,
+          getQuantity,
+        },
+        flash: {
+          getMessage,
+          setMessage,
+          hideMessage,
+        },
       }}
     >
       {children}

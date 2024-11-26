@@ -1,21 +1,23 @@
 import Stack from 'react-bootstrap/Stack';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { getProductByCategory } from "../data/data";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
-import { Info } from "./Alerts";
+import { AppContext } from "./AppContext";
 
 function ItemListContainer() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { tag } = useParams();
+  const { flash } = useContext(AppContext);
 
   useEffect(() => {
     getProductByCategory(tag).then((data) => {
       setData(data);
       setLoading(false);
+      if (data.length == 0) flash.setMessage("La lista está vacía.", "info");
     });
   }, []);
 
@@ -30,8 +32,6 @@ function ItemListContainer() {
           <Loading />
           <h6 className="pt-3">Obteniendo los datos...</h6>
         </div>
-      ) : data.length == 0 ? (
-        <Info msg="La lista está vacía." />
       ) : (
         <ItemList data={data} />
       )}

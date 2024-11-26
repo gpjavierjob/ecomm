@@ -1,21 +1,23 @@
 import Stack from "react-bootstrap/Stack";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { getProduct } from "../data/data";
 import ItemDetail from "./ItemDetail";
 import Loading from "./Loading";
-import { Error } from "./Alerts";
+import { AppContext } from "./AppContext";
 
 function ItemDetailContainer(props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const { flash } = useContext(AppContext);
 
   useEffect(() => {
     getProduct(id).then((data) => {
       setData(data);
       setLoading(false);
+      if (!data) flash.setMessage("No se encontró el producto.", "error");
     });
   }, []);
 
@@ -29,8 +31,6 @@ function ItemDetailContainer(props) {
           <Loading />
           <h6>Obteniendo los datos...</h6>
         </div>
-      ) : !data ? (
-        <Error msg="No se encontró el producto." />
       ) : (
         <ItemDetail {...data} />
       )}

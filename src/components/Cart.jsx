@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -6,22 +6,26 @@ import Col from "react-bootstrap/Col";
 
 import { AppContext } from "./AppContext";
 import CartItem from "./CartItem";
-import { Info } from "./Alerts";
 
 function Cart() {
-  const { cartItems, clearCart, getTotal } = useContext(AppContext);
+  const { cart, flash } = useContext(AppContext);
 
-  const removeAllCartItems = () => clearCart();
+  const removeAllCartItems = () => {
+    cart.clear();
+    flash.setMessage("El carrito está vacío.", "info");
+  };
+  const buyCartItems = () => cart.clear();
+
+  useEffect(() => {
+    if (cart.getItems().length == 0)
+      flash.setMessage("El carrito está vacío.", "info");
+  }, []);
 
   return (
     <Container className="mt-3">
-      {cartItems.length == 0 ? (
-        <Row className="justify-content-center">
-          <Info msg="El carrito está vacío." />
-        </Row>
-      ) : (
+      {cart.getItems().length > 0 && (
         <>
-          {cartItems.map((cartItem) => (
+          {cart.getItems().map((cartItem) => (
             <CartItem key={cartItem.id} {...cartItem} />
           ))}
           <Row className="mt-3">
@@ -29,7 +33,7 @@ function Cart() {
               <b>Total</b>
             </Col>
             <Col md={2} className="text-center">
-              {getTotal().toFixed(2)}
+              {cart.getTotal().toFixed(2)}
             </Col>
           </Row>
           <Row className="mt-3">
@@ -37,7 +41,7 @@ function Cart() {
               <Button onClick={removeAllCartItems}>Vaciar</Button>
             </Col>
             <Col className="text-center">
-              <Button onClick={removeAllCartItems}>Comprar</Button>
+              <Button onClick={buyCartItems}>Comprar</Button>
             </Col>
           </Row>
         </>

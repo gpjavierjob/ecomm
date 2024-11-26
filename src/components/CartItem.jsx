@@ -7,14 +7,14 @@ import Col from "react-bootstrap/Col";
 import { AppContext } from "./AppContext";
 
 function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
-  const { addItemToCart, removeItemFromCart } = useContext(AppContext);
-
+  const { cart } = useContext(AppContext);
+  
   const decreaseQuantity = () => {
-    removeItemFromCart(id);
+    cart.removeItemFromCart(id);
   };
 
   const increaseQuantity = () => {
-    addItemToCart({ id, stock }, 1);
+    cart.addItemToCart({ id, stock }, 1);
   };
 
   return (
@@ -22,8 +22,12 @@ function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
       <Col md={2} className="text-center">
         <Image src={image} style={{ height: 100 }} className="img-fluid" />
       </Col>
-      <Col md={3} className="text-center">{name}</Col>
-      <Col md={2} className="text-center">{price.toFixed(2)}</Col>
+      <Col md={3} className="text-center">
+        {name}
+      </Col>
+      <Col md={2} className="text-center">
+        {price.toFixed(2)}
+      </Col>
       <Col md={3} className="text-center">
         <Button size="sm" onClick={decreaseQuantity} disabled={quantity <= 0}>
           -
@@ -37,7 +41,9 @@ function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
           +
         </Button>
       </Col>
-      <Col md={2} className="text-center">{(price * quantity).toFixed(2)}</Col>
+      <Col md={2} className="text-center">
+        {(price * quantity).toFixed(2)}
+      </Col>
     </Row>
   );
 }

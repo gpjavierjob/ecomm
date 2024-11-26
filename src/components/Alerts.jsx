@@ -1,6 +1,10 @@
 import Alert from "react-bootstrap/Alert";
-import { BsInfoCircle } from "react-icons/bs";
-import { BsExclamationCircle } from "react-icons/bs";
+import {
+  BsCheckCircle,
+  BsInfoCircle,
+  BsExclamationCircle,
+  BsXCircle,
+} from "react-icons/bs";
 
 function Message({ msg, variant, children }) {
   return (
@@ -9,10 +13,19 @@ function Message({ msg, variant, children }) {
       style={{ height: "82px", width: "300px" }}
       key={variant}
       variant={variant}
+      dismissible
     >
       {children}
       <h6 className="ps-2">{msg}</h6>
     </Alert>
+  );
+}
+
+function Success({ msg }) {
+  return (
+    <Message msg={msg} variant="success">
+      <BsCheckCircle className="w-25 h-100" />
+    </Message>
   );
 }
 
@@ -24,12 +37,20 @@ function Info({ msg }) {
   );
 }
 
-function Error({ msg }) {
+function Warning({ msg }) {
   return (
-    <Message msg={msg} variant="danger">
+    <Message msg={msg} variant="warning">
       <BsExclamationCircle className="w-25 h-100" />
     </Message>
   );
 }
 
-export { Info, Error };
+function Error({ msg }) {
+  return (
+    <Message msg={msg} variant="danger">
+      <BsXCircle className="w-25 h-100" />
+    </Message>
+  );
+}
+
+export { Success, Info, Warning, Error };
