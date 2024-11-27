@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useState, useContext } from "react";
 
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function ItemDetail({
   id,

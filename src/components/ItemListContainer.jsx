@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getProductByCategory } from "../data/data";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function ItemListContainer() {
   const [data, setData] = useState([]);

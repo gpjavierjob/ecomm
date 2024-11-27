@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function Item({ id, name, price, uom, category, stock, image }) {
   const [quantity, setQuantity] = useState(1);

@@ -3,14 +3,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
 import { Success, Info, Warning, Error } from "./Alerts";
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function FlashMessage() {
   const { flash } = useContext(AppContext);
-  console.log(flash.getMessage());
+
   useEffect(() => {
     flash.hideMessage();
-    console.log(flash.getMessage());
   }, []);
 
   const msg = flash.getMessage();

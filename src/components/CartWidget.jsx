@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function CartWidget() {
   const { cart } = useContext(AppContext);

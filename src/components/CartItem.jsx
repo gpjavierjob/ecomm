@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
   const { cart } = useContext(AppContext);

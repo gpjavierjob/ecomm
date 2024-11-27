@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getProduct } from "../data/data";
 import ItemDetail from "./ItemDetail";
 import Loading from "./Loading";
-import { AppContext } from "./AppContext";
+import { AppContext } from "../contexts/AppContext";
 
 function ItemDetailContainer(props) {
   const [data, setData] = useState([]);
