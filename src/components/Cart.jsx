@@ -29,12 +29,13 @@ function Cart() {
             <CartItem key={cartItem.id} {...cartItem} />
           ))}
           <Row className="mt-3">
-            <Col span={4} className="text-center text-md-end">
+            <Col md={9} className="text-center text-md-end">
               <b>Total</b>
             </Col>
             <Col md={2} className="text-center">
               {cart.getTotal().toFixed(2)}
             </Col>
+            <Col md={1}></Col>
           </Row>
           <Row className="mt-3">
             <Col className="text-center">

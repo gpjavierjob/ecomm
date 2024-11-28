@@ -10,25 +10,29 @@ function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
   const { cart } = useContext(AppContext);
   
   const decreaseQuantity = () => {
-    cart.removeItemFromCart(id);
+    cart.removeItem(id);
   };
 
   const increaseQuantity = () => {
-    cart.addItemToCart({ id, stock }, 1);
+    cart.addItem({ id, stock }, 1);
+  };
+
+  const remove = () => {
+    cart.removeItem(id, true);
   };
 
   return (
     <Row className="align-items-center border-bottom border-success-subtle">
-      <Col md={2} className="text-center">
+      <Col md={2} className="text-center  mx-0 px-0">
         <Image src={image} style={{ height: 100 }} className="img-fluid" />
       </Col>
-      <Col md={3} className="text-center">
+      <Col md={3} className="text-center  mx-0 px-0">
         {name}
       </Col>
-      <Col md={2} className="text-center">
+      <Col md={2} className="text-center  mx-0 px-0">
         {price.toFixed(2)}
       </Col>
-      <Col md={3} className="text-center">
+      <Col md={2} className="text-center  mx-0 px-0">
         <Button size="sm" onClick={decreaseQuantity} disabled={quantity <= 0}>
           -
         </Button>
@@ -41,8 +45,13 @@ function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
           +
         </Button>
       </Col>
-      <Col md={2} className="text-center">
+      <Col md={2} className="text-center  mx-0 px-0">
         {(price * quantity).toFixed(2)}
+      </Col>
+      <Col md={1} className="text-center  mx-0 px-0">
+        <Button size="sm" onClick={remove} className="btn-danger">
+          X
+        </Button>
       </Col>
     </Row>
   );

@@ -31,7 +31,7 @@ function AppContextProvider({ children }) {
   };
 
   // Eliminar un ítem del carrito
-  const removeItem = (id) => {
+  const removeItem = (id, removeAll=false) => {
     setCartItems((prevItems) => {
       // Comprobar si este ítem ya existe en el carrito
       const cartItemIndex = prevItems.findIndex(
@@ -40,8 +40,9 @@ function AppContextProvider({ children }) {
       // Si no exite, no cambia el contenido del carrito
       if (cartItemIndex == -1) return prevItems;
       const cartItem = prevItems[cartItemIndex];
-      // Si la cantidad del ítem es 1, se elimina del carrito
-      if (cartItem.quantity == 1) return prevItems.toSpliced(cartItemIndex, 1);
+      // Si la cantidad del ítem es 1 o se quieren eliminar todos los items con este id,
+      // se elimina del carrito
+      if (cartItem.quantity == 1 || removeAll) return prevItems.toSpliced(cartItemIndex, 1);
       // En caso contrario, se disminuye en 1 la cantidad del ítem
       cartItem.quantity -= 1;
       // Para que el estado note que ocurrió un cambio
