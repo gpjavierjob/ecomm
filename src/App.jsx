@@ -18,8 +18,8 @@ function App() {
           <Route index element={<ItemListContainer />} />
           <Route path="/category/:tag" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
-          <Route path="/carrito" element={<Cart />} />
-          <Route path="*" element={<NoPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

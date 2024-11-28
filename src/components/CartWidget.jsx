@@ -11,7 +11,7 @@ function CartWidget() {
   const badgeClassName =
     "position-absolute top-0 start-100 translate-middle border border-light";
   return (
-    <Link to={"/carrito"}>
+    <Link to={"/cart"}>
       <div className="position-relative m-2 p-0">
         <FaShoppingCart size="30px" alt="carrito de compras" />
         <Badge className={badgeClassName} bg="danger" pill>

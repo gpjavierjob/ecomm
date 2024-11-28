@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from "react-bootstrap/Navbar";
+import { NavLink } from "react-router-dom";
 
 import Logo from "./Logo";
 import NavLinkList from "./NavLinkList";
@@ -10,7 +11,7 @@ function NavigationBar() {
   return (
     <Navbar expand="md" className="bg-success-subtle text-success-emphasis">
       <Container className="justify-content-start">
-        <Navbar.Brand className="flex-fill" href="/">
+        <Navbar.Brand as={NavLink} to="/" className="flex-fill">
           <Container className="d-flex flex-row align-items-center">
             <Logo />
             <span className="ps-2">Verdulería.uy</span>

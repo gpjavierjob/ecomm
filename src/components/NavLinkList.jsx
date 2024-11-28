@@ -1,4 +1,5 @@
 import Nav from "react-bootstrap/Nav";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Loading from "./Loading";
@@ -27,9 +28,15 @@ function NavLinkList() {
         <h2>Imposible cargar la aplicación. Reinténtelo más tarde.</h2>
       ) : (
         <>
-          <Nav.Link key={0} href="/" text="Inicio" />
+          <Nav.Link as={NavLink} key={0} to="/">
+            Inicio
+          </Nav.Link>
           {categories.map((category) => (
-            <Nav.Link key={category.id} href={`/category/${category.tag}`}>
+            <Nav.Link
+              as={NavLink}
+              key={category.id}
+              to={`/category/${category.tag}`}
+            >
               {category.name}
             </Nav.Link>
           ))}
