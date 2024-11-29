@@ -1,25 +1,23 @@
 import Stack from 'react-bootstrap/Stack';
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { getProductByCategory } from "../data/data";
+import { useProducts } from "../firebase/products";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
 import { AppContext } from "../contexts/AppContext";
 
 function ItemListContainer() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { tag } = useParams();
   const { flash } = useContext(AppContext);
+  const [data, loading, error] = useProducts(tag);
 
-  useEffect(() => {
-    getProductByCategory(tag).then((data) => {
-      setData(data);
-      setLoading(false);
-      if (data.length == 0) flash.setMessage("La lista está vacía.", "info");
-    });
-  }, []);
+  // useEffect(() => {
+  //   if (error)
+  //     flash.setMessage("No se pudo obtener la lista de productos.", "error");
+  //   else if (data && data.length == 0)
+  //     flash.setMessage("La lista está vacía.", "info");
+  // }, [loading])
 
   return (
     <Stack

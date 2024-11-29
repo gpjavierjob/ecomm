@@ -1,21 +1,11 @@
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import useCategories from "../firebase/categories";
 
 import Loading from "./Loading";
 
-import { getCategories } from "../data/data";
-
 function NavLinkList() {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getCategories().then((data) => {
-      setCategories(data);
-      setLoading(false);
-    });
-  }, []);
+  const [ categories, loading, error ] = useCategories();
 
   return (
     <>
@@ -24,7 +14,7 @@ function NavLinkList() {
           <Loading width="32px" />
           <h6 className="ps-2">Cargando...</h6>
         </div>
-      ) : !categories ? (
+      ) : error ? (
         <h2>Imposible cargar la aplicación. Reinténtelo más tarde.</h2>
       ) : (
         <>

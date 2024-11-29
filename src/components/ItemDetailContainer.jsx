@@ -1,25 +1,24 @@
 import Stack from "react-bootstrap/Stack";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { getProduct } from "../data/data";
+import { useProduct } from "../firebase/products";
 import ItemDetail from "./ItemDetail";
 import Loading from "./Loading";
 import { AppContext } from "../contexts/AppContext";
 
 function ItemDetailContainer(props) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { flash } = useContext(AppContext);
+  const [data, loading, error] = useProduct(id);
 
-  useEffect(() => {
-    getProduct(id).then((data) => {
-      setData(data);
-      setLoading(false);
-      if (!data) flash.setMessage("No se encontró el producto.", "error");
-    });
-  }, []);
+  // useEffect(() => {
+  //   getProduct(id).then((data) => {
+  //     setData(data);
+  //     setLoading(false);
+  //     if (!data) flash.setMessage("No se encontró el producto.", "error");
+  //   });
+  // }, []);
 
   return (
     <Stack

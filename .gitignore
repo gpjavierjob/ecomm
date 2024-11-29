@@ -25,4 +25,6 @@ dist-ssr
 
 # Propios
 src/data
-src/firebase
+src/hooks
+src/firebase/config.js
+src/firebase/upload.js
