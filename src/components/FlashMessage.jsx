@@ -13,6 +13,7 @@ function FlashMessage() {
   }, []);
 
   const msg = flash.getMessage();
+  console.log(msg);
 
   if (!msg || !msg.visible) return <></>;
 

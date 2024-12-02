@@ -1,13 +1,13 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext([]);
 
 function AppContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [flashMessage, setFlashMessage] = useState(null);
 
   const getItems = () => cartItems;
+
+  const isEmpty = () => cartItems.length == 0;
 
   // Agregar un ítem al carrito
   const addItem = (item, quantity) => {
@@ -31,7 +31,7 @@ function AppContextProvider({ children }) {
   };
 
   // Eliminar un ítem del carrito
-  const removeItem = (id, removeAll=false) => {
+  const removeItem = (id, removeAll = false) => {
     setCartItems((prevItems) => {
       // Comprobar si este ítem ya existe en el carrito
       const cartItemIndex = prevItems.findIndex(
@@ -42,7 +42,8 @@ function AppContextProvider({ children }) {
       const cartItem = prevItems[cartItemIndex];
       // Si la cantidad del ítem es 1 o se quieren eliminar todos los items con este id,
       // se elimina del carrito
-      if (cartItem.quantity == 1 || removeAll) return prevItems.toSpliced(cartItemIndex, 1);
+      if (cartItem.quantity == 1 || removeAll)
+        return prevItems.toSpliced(cartItemIndex, 1);
       // En caso contrario, se disminuye en 1 la cantidad del ítem
       cartItem.quantity -= 1;
       // Para que el estado note que ocurrió un cambio
@@ -53,6 +54,7 @@ function AppContextProvider({ children }) {
   // Vaciar el carrito
   const clear = () => {
     setCartItems([]);
+    setMessage("El carrito está vacío.", "info");
   };
 
   // Calcular el total general
@@ -63,31 +65,17 @@ function AppContextProvider({ children }) {
   const getQuantity = () =>
     cartItems.reduce((quantity, item) => quantity + item.quantity, 0);
 
-  const getMessage = () => flashMessage;
-  const setMessage = (text, variant) =>
-    setFlashMessage((oldMsg) => {
-      return { text, variant, visible: true };
-    });
-  const hideMessage = () =>
-    setFlashMessage((oldMsg) => {
-      return oldMsg && { ...oldMsg, visible: false };
-    });
-
   return (
     <AppContext.Provider
       value={{
         cart: {
           getItems,
+          isEmpty,
           addItem,
           removeItem,
           clear,
           getTotal,
           getQuantity,
-        },
-        flash: {
-          getMessage,
-          setMessage,
-          hideMessage,
         },
       }}
     >

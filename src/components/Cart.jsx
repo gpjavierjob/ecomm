@@ -6,24 +6,24 @@ import Col from "react-bootstrap/Col";
 
 import { AppContext } from "../contexts/AppContext";
 import CartItem from "./CartItem";
+import { useToast } from "../contexts/ToastsContext";
 
 function Cart() {
-  const { cart, flash } = useContext(AppContext);
+  const { cart } = useContext(AppContext);
+  const { addToast } = useToast();
 
-  const removeAllCartItems = () => {
-    cart.clear();
-    flash.setMessage("El carrito está vacío.", "info");
-  };
+  const removeAllCartItems = () => cart.clear();
+
   const buyCartItems = () => cart.clear();
 
   useEffect(() => {
-    if (cart.getItems().length == 0)
-      flash.setMessage("El carrito está vacío.", "info");
-  }, []);
+    if (cart.isEmpty())
+      addToast(null, "El carrito está vacío.", "info");
+  }, [cart.getItems()]);
 
   return (
     <Container className="mt-3">
-      {cart.getItems().length > 0 && (
+      {!cart.isEmpty() && (
         <>
           {cart.getItems().map((cartItem) => (
             <CartItem key={cartItem.id} {...cartItem} />
