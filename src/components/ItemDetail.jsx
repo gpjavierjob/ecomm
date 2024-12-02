@@ -43,14 +43,14 @@ function ItemDetail({
             style={{ width: "15rem" }}
           >
             <Card.Title>{name}</Card.Title>
-            <Card.Subtitle>{category.name}</Card.Subtitle>
-            <Card.Text>{description}</Card.Text>
-            <Card.Text>
+            <Card.Subtitle className="my-2">{category.name}</Card.Subtitle>
+            <Card.Text className="my-2">{description}</Card.Text>
+            <Card.Text className="my-2">
               <span>${price.toFixed(2)}</span>
               <span className="p-2">-</span>
               <span>{uom}</span>
             </Card.Text>
-            <Card.Text>Stock: {stock}</Card.Text>
+            <Card.Text className="my-2">Stock: {stock}</Card.Text>
             <Card.Text className="d-flex flex-row align-items-center">
               <Button
                 className="me-auto"

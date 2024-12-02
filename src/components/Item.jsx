@@ -28,13 +28,13 @@ function Item({ id, name, price, uom, category, stock, image }) {
         <Card.Img variant="top" src={image} />
         <Card.Body className="text-center">
           <Card.Title>{name}</Card.Title>
-          <Card.Subtitle>{category.name}</Card.Subtitle>
-          <Card.Text>
+          <Card.Subtitle className="my-2">{category.name}</Card.Subtitle>
+          <Card.Text className="my-2">
             <span>${price.toFixed(2)}</span>
             <span className="p-2">-</span>
             <span>{uom}</span>
           </Card.Text>
-          <Card.Text>Stock: {stock}</Card.Text>
+          <Card.Text className="my-2">Stock: {stock}</Card.Text>
         </Card.Body>
       </Link>
       <Card.Footer className="d-flex flex-row align-items-center">
