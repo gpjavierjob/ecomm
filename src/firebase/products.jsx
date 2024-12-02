@@ -3,6 +3,7 @@ import {
   collection,
   where,
   query,
+  orderBy,
   doc,
   getDoc,
 } from "firebase/firestore";
@@ -19,7 +20,10 @@ function useProducts(categoryTag) {
       );
     }
 
+    collectionRef = query(collectionRef, orderBy("name"));
+
     const snapshot = await getDocs(collectionRef);
+    console.log(snapshot.docs);
     const data = snapshot.docs.map((doc) => {
       return { id: doc.id, ...doc.data() };
     });

@@ -16,6 +16,7 @@ function useFirebase(props, callback) {
         const data = await callback(db);
         setData(data);
       } catch (error) {
+        console.error(error);
         setError(error);
       } finally {
         setLoading(false);
