@@ -1,6 +1,6 @@
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
-import useCategories from "../firebase/categories";
+import { useCategories } from "../firebase/categories";
 
 import Loading from "./Loading";
 

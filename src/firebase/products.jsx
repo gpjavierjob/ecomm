@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import {
-  getFirestore,
   getDocs,
   collection,
   where,
@@ -8,66 +6,38 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
+import { useFirebase } from "./firebase";
 
 function useProducts(categoryTag) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const getProducts = async (db) => {
+    let collectionRef = collection(db, "Products");
 
-  useEffect(() => {
-    // Para poder llamar a una función asíncrona con un effect hook
-    (async () => {
-      const db = getFirestore();
+    if (categoryTag) {
+      collectionRef = query(
+        collectionRef,
+        where("category.tag", "==", categoryTag)
+      );
+    }
 
-      let collectionRef = collection(db, "Products");
+    const snapshot = await getDocs(collectionRef);
+    const data = snapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
 
-      if (categoryTag)
-        collectionRef = query(
-          collectionRef,
-          where("category.tag", "==", categoryTag)
-        );
+    return data;
+  };
 
-      try {
-        const snapshot = await getDocs(collectionRef);
-        const data = snapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        setData(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [categoryTag]);
-
-  return [data, loading, error];
+  return useFirebase([categoryTag], getProducts);
 }
 
 function useProduct(id) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const getProduct = async (db) => {
+    const docRef = doc(db, "Products", id);
+    const snapshot = await getDoc(docRef);
+    return { id: snapshot.id, ...snapshot.data() };
+  };
 
-  useEffect(() => {
-    // Para poder llamar a una función asíncrona con un effect hook
-    (async () => {
-      const db = getFirestore();
-
-      const docRef = doc(db, "Products", id);
-
-      try {
-        const snapshot = await getDoc(docRef);
-        setData({ id: snapshot.id, ...snapshot.data() });
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [id]);
-
-  return [data, loading, error];
+  return useFirebase([id], getProduct);
 }
 
-export { useProducts, useProduct };
+export { useProduct, useProducts };
