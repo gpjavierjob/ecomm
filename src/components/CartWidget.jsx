@@ -1,23 +1,22 @@
 import Badge from 'react-bootstrap/Badge';
 import { FaShoppingCart } from "react-icons/fa";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { AppContext } from "../contexts/AppContext";
+import { useCart } from "../contexts/CartContext";
 
 function CartWidget() {
-  const { cart } = useContext(AppContext);
-  
+  const { getQuantity } = useCart();
+
   const badgeClassName =
     "position-absolute top-0 start-100 translate-middle border border-light";
   return (
     <>
-      {cart.getQuantity() > 0 && (
+      {getQuantity() > 0 && (
         <Link to={"/cart"}>
           <div className="position-relative m-2 p-0">
             <FaShoppingCart size="30px" alt="carrito de compras" />
             <Badge className={badgeClassName} bg="danger" pill>
-              {cart.getQuantity()}
+              {getQuantity()}
             </Badge>
             <span className="visually-hidden">
               cantidad de productos en el carrito

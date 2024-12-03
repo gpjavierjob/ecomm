@@ -1,23 +1,21 @@
-import Stack from 'react-bootstrap/Stack';
-import { useContext } from "react";
+import Stack from "react-bootstrap/Stack";
 import { useParams } from "react-router-dom";
 
-import { useProducts } from "../firebase/products";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
-import { AppContext } from "../contexts/AppContext";
+import { useProducts } from "../firebase/products";
 
 function ItemListContainer() {
   const { tag } = useParams();
-  const { flash } = useContext(AppContext);
   const [data, loading, error] = useProducts(tag);
 
-  // useEffect(() => {
-  //   if (error)
-  //     flash.setMessage("No se pudo obtener la lista de productos.", "error");
-  //   else if (data && data.length == 0)
-  //     flash.setMessage("La lista está vacía.", "info");
-  // }, [loading])
+  useEffect(() => {
+    console.log(error);
+    if (error)
+      addError(
+        "Ha ocurrido un error en la comunicación. Reinténtelo nuevamente."
+      );
+  }, []);
 
   return (
     <Stack

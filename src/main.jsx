@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { initializeApp } from "firebase/app";
 
 import App from './App.jsx'
-import { AppContextProvider } from "./contexts/AppContext.jsx";
+import { CartContextProvider } from "./contexts/CartContext";
+import { ToastContextProvider } from "./contexts/ToastContext";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -20,8 +21,10 @@ initializeApp(firebaseConfig);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AppContextProvider>
-      <App />
-    </AppContextProvider>
+    <CartContextProvider>
+      <ToastContextProvider>
+        <App />
+      </ToastContextProvider>
+    </CartContextProvider>
   </StrictMode>
 );

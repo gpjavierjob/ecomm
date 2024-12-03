@@ -1,8 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 
 import NavigationBar from "./NavigationBar";
-// import FlashMessage from "./FlashMessage";
-import { ToastProvider } from '../contexts/ToastsContext'
 
 function Layout() {
   // Se utiliza para obligar la renderización del Outlet cuando cambia la ruta pero
@@ -12,10 +10,7 @@ function Layout() {
   return (
     <>
       <NavigationBar />
-      {/* <FlashMessage /> */}
-      <ToastProvider>
-        <Outlet key={location.pathname} />
-      </ToastProvider>
+      <Outlet key={location.pathname} />
     </>
   );
 }

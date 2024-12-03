@@ -1,24 +1,23 @@
-import { useContext } from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { AppContext } from "../contexts/AppContext";
+import { useCart } from "../contexts/CartContext";
 
 function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
-  const { cart } = useContext(AppContext);
-  
+  const { addItem, removeItem } = useCart();
+
   const decreaseQuantity = () => {
-    cart.removeItem(id);
+    removeItem(id);
   };
 
   const increaseQuantity = () => {
-    cart.addItem({ id, stock }, 1);
+    addItem({ id, stock }, 1);
   };
 
   const remove = () => {
-    cart.removeItem(id, true);
+    removeItem(id, true);
   };
 
   return (

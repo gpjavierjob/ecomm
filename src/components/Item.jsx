@@ -1,13 +1,13 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
-import { AppContext } from "../contexts/AppContext";
+import { useCart } from "../contexts/CartContext";
 
 function Item({ id, name, price, uom, category, stock, image }) {
   const [quantity, setQuantity] = useState(1);
-  const { cart } = useContext(AppContext);
+  const { addItem } = useCart();
   
   const decreaseQuantity = () => {
     setQuantity((quantity) => quantity - 1);
@@ -18,7 +18,7 @@ function Item({ id, name, price, uom, category, stock, image }) {
   };
 
   const comprar = () => {
-    cart.addItem({ id, name, price, uom, category, stock, image }, quantity);
+    addItem({ id, name, price, uom, category, stock, image }, quantity);
     setQuantity(1);
   };
 

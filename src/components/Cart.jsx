@@ -1,31 +1,30 @@
-import { useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useEffect } from "react";
 
-import { AppContext } from "../contexts/AppContext";
 import CartItem from "./CartItem";
-import { useToast } from "../contexts/ToastsContext";
+import { useCart } from "../contexts/CartContext";
+import { useToast } from "../contexts/ToastContext";
 
 function Cart() {
-  const { cart } = useContext(AppContext);
-  const { addToast } = useToast();
+  const { isEmpty, getItems, clear, getTotal } = useCart();
+  const { addInfo } = useToast();
 
-  const removeAllCartItems = () => cart.clear();
+  const removeAllCartItems = () => clear();
 
-  const buyCartItems = () => cart.clear();
+  const buyCartItems = () => clear();
 
   useEffect(() => {
-    if (cart.isEmpty())
-      addToast(null, "El carrito está vacío.", "info");
-  }, [cart.getItems()]);
+    if (isEmpty()) addInfo("El carrito está vacío.");
+  }, [getItems()]);
 
   return (
     <Container className="mt-3">
-      {!cart.isEmpty() && (
+      {!isEmpty() && (
         <>
-          {cart.getItems().map((cartItem) => (
+          {getItems().map((cartItem) => (
             <CartItem key={cartItem.id} {...cartItem} />
           ))}
           <Row className="mt-3">
@@ -33,7 +32,7 @@ function Cart() {
               <b>Total</b>
             </Col>
             <Col md={2} className="text-center">
-              {cart.getTotal().toFixed(2)}
+              {getTotal().toFixed(2)}
             </Col>
             <Col md={1}></Col>
           </Row>
