@@ -1,5 +1,6 @@
 import Stack from "react-bootstrap/Stack";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 import ItemList from "./ItemList";
 import Loading from "./Loading";
