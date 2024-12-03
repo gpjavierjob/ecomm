@@ -13,6 +13,8 @@ const ToastContext = createContext();
 export const ToastContextProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
+  const delay = import.meta.env.VITE_TOASTS_DELAY;
+
   const addToast = (title, message, image, variant = "primary") => {
     variant = variant.toLowerCase();
     setToasts((prevToasts) => [
@@ -47,7 +49,7 @@ export const ToastContextProvider = ({ children }) => {
           <Toast
             key={id}
             onClose={() => removeToast(id)}
-            delay={3000}
+            delay={delay}
             autohide
             bg={variant}
           >
