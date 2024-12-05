@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CartItem from "./CartItem";
 import { useCart } from "../contexts/CartContext";
@@ -11,13 +12,17 @@ import { useToast } from "../contexts/ToastContext";
 function Cart() {
   const { isEmpty, getItems, clear, getTotal } = useCart();
   const { addInfo } = useToast();
+  const navigate = useNavigate();
 
   const removeAllCartItems = () => clear();
 
   const buyCartItems = () => clear();
 
   useEffect(() => {
-    if (isEmpty()) addInfo("El carrito está vacío.");
+    if (isEmpty()) {
+      addInfo("El carrito está vacío.");
+      navigate("/");
+    }
   }, [getItems()]);
 
   return (
