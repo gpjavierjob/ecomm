@@ -5,18 +5,23 @@ import { useEffect } from "react";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
 import { useProducts } from "../firebase/products";
+import { useToast } from "../contexts/ToastContext";
 
 function ItemListContainer() {
   const { tag } = useParams();
-  const [data, loading, error] = useProducts(tag);
+  const [products, loading, error] = useProducts(tag);
+  const { addError, addInfo } = useToast();
 
   useEffect(() => {
-    console.log(error);
-    if (error)
-      addError(
-        "Ha ocurrido un error en la comunicación. Reinténtelo nuevamente."
-      );
-  }, []);
+    if (loading) return;
+
+    if (products.length === 0) {
+      addInfo("No se encontraron productos para esta categoría.");
+      return;
+    }
+
+    if (error) addError("Error inesperado. No se obtuvieron los productos.");
+  }, [loading]);
 
   return (
     <Stack
@@ -30,7 +35,7 @@ function ItemListContainer() {
           <h6 className="pt-3">Obteniendo los datos...</h6>
         </div>
       ) : (
-        <ItemList data={data} />
+        <ItemList data={products} />
       )}
     </Stack>
   );

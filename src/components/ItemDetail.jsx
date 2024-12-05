@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 
 import { useCart } from "../contexts/CartContext";
+import { useToast } from "../contexts/ToastContext";
 
 function ItemDetail({
   id,
@@ -16,6 +17,7 @@ function ItemDetail({
 }) {
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
+  const { addSuccess } = useToast();
 
   const decreaseQuantity = () => {
     setQuantity((quantity) => quantity - 1);
@@ -27,6 +29,12 @@ function ItemDetail({
 
   const comprar = () => {
     addItem({ id, name, price, uom, category, stock, image }, quantity);
+    addSuccess(
+      quantity == 1
+        ? "Adicionado el producto al carrito."
+        : `Adicionados ${quantity} productos al carrito`
+    );
+    setQuantity(1);
   };
 
   return (

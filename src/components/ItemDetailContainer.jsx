@@ -9,16 +9,19 @@ import { useToast } from "../contexts/ToastContext";
 
 function ItemDetailContainer(props) {
   const { id } = useParams();
-  const [data, loading, error] = useProduct(id);
-  const { addError } = useToast();
+  const [product, loading, error] = useProduct(id);
+  const { addError, addInfo } = useToast();
 
   useEffect(() => {
-    console.log(error);
-    if (error)
-      addError(
-        "Ha ocurrido un error en la comunicación. Reinténtelo nuevamente."
-      );
-  }, []);
+    if (loading) return;
+
+    if (!product) {
+      addInfo("No se encontró el producto.");
+      return;
+    }
+
+    if (error) addError("Error inesperado. No se obtuvo el producto.");
+  }, [loading]);
 
   return (
     <Stack
@@ -31,7 +34,7 @@ function ItemDetailContainer(props) {
           <h6>Obteniendo los datos...</h6>
         </div>
       ) : (
-        <ItemDetail {...data} />
+        <ItemDetail {...product} />
       )}
     </Stack>
   );

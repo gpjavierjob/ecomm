@@ -17,8 +17,6 @@ export function AppContextProvider({ children }) {
   } = useCart();
   // const { addInfo, addSuccess, addWarning, addError } = useToast();
 
-  console.log(getQuantity);
-
   return (
     <AppContext.Provider
       value={{

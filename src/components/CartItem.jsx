@@ -4,20 +4,29 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import { useCart } from "../contexts/CartContext";
+import { useToast } from "../contexts/ToastContext";
 
-function CartItem({ id, name, price, uom, category, stock, image, quantity }) {
+function CartItem({ id, name, price, stock, image, quantity }) {
   const { addItem, removeItem } = useCart();
+  const { addSuccess } = useToast();
 
   const decreaseQuantity = () => {
     removeItem(id);
+    addSuccess("Eliminado el producto del carrito.");
   };
 
   const increaseQuantity = () => {
     addItem({ id, stock }, 1);
+    addSuccess("Adicionado el producto al carrito.");
   };
 
   const remove = () => {
     removeItem(id, true);
+    addSuccess(
+      quantity == 1
+        ? "Eliminado el producto del carrito."
+        : `Eliminados ${quantity} productos del carrito`
+    );
   };
 
   return (

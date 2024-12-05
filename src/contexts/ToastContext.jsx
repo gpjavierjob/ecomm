@@ -63,7 +63,8 @@ export const ToastContextProvider = ({ children }) => {
             </Toast.Header>
             <Toast.Body
               className={
-                ["primary", "dark", "danger"].includes(variant) && "text-white"
+                ["primary", "success", "dark", "danger"].includes(variant) &&
+                "text-white"
               }
             >
               {message}

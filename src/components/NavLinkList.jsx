@@ -1,22 +1,30 @@
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
-import { useCategories } from "../firebase/categories";
+import { useEffect } from "react";
 
-import Loading from "./Loading";
+import { useCategories } from "../firebase/categories";
+import { useToast } from "../contexts/ToastContext";
 
 function NavLinkList() {
-  const [ categories, loading, error ] = useCategories();
+  const [categories, loading, error] = useCategories();
+  const { addError } = useToast();
+
+  useEffect(() => {
+    if (loading) return;
+
+    if (categories.length === 0) {
+      addError(
+        "No se obtuvieron las categorías. Revise su conexión a internet."
+      );
+      return;
+    }
+
+    if (error) addError("Error inesperado. No se obtuvieron las categorías.");
+  }, [loading]);
 
   return (
     <>
-      {loading ? (
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <Loading width="32px" />
-          <h6 className="ps-2">Cargando...</h6>
-        </div>
-      ) : error ? (
-        <h2>Imposible cargar la aplicación. Reinténtelo más tarde.</h2>
-      ) : (
+      {categories?.length > 0 && (
         <>
           <Nav.Link as={NavLink} key={0} to="/">
             Inicio
