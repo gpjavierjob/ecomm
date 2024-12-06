@@ -51,7 +51,6 @@ export function CartContextProvider({ children }) {
 
   const clear = () => {
     setCartItems([]);
-    setMessage("El carrito está vacío.", "info");
   };
 
   const getTotal = () =>

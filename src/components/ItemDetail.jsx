@@ -60,26 +60,28 @@ function ItemDetail({
             </Card.Text>
             <Card.Text className="my-2">Stock: {stock}</Card.Text>
             <Card.Text className="d-flex flex-row align-items-center">
-              <Button
-                className="me-auto"
-                size="sm"
-                onClick={decreaseQuantity}
-                disabled={quantity <= 1}
-              >
-                -
-              </Button>
-              <span className="me-auto px-3 m-1 border border-primary">
-                {quantity}
+              <span className="d-flex flex-row justify-content-center">
+                <Button
+                  className=""
+                  size="sm"
+                  onClick={decreaseQuantity}
+                  disabled={quantity <= 1}
+                >
+                  -
+                </Button>
+                <span className="rounded border border-primary px-2 mx-1 my-0">
+                  {quantity}
+                </span>
+                <Button
+                  className=""
+                  size="sm"
+                  onClick={increaseQuantity}
+                  disabled={quantity >= stock}
+                >
+                  +
+                </Button>
               </span>
-              <Button
-                className="me-auto"
-                size="sm"
-                onClick={increaseQuantity}
-                disabled={quantity >= stock}
-              >
-                +
-              </Button>
-              <Button className="ms-auto" onClick={comprar}>
+              <Button size="sm" className="ms-auto" onClick={comprar}>
                 Comprar
               </Button>
             </Card.Text>

@@ -12,7 +12,7 @@ function CartWidget() {
   return (
     <>
       {getQuantity() > 0 && (
-        <Link to={"/cart"}>
+        <Link to={"/checkout"}>
           <div className="position-relative m-2 p-0">
             <FaShoppingCart size="30px" alt="carrito de compras" />
             <Badge className={badgeClassName} bg="danger" pill>

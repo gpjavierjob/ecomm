@@ -44,19 +44,23 @@ function Item({ id, name, price, uom, category, stock, image }) {
           <Card.Text className="my-2">Stock: {stock}</Card.Text>
         </Card.Body>
       </Link>
-      <Card.Footer className="d-flex flex-row align-items-center">
-        <Button size="sm" onClick={decreaseQuantity} disabled={quantity <= 1}>
-          -
-        </Button>
-        <span className="px-3 m-1 border border-primary">{quantity}</span>
-        <Button
-          size="sm"
-          onClick={increaseQuantity}
-          disabled={quantity >= stock}
-        >
-          +
-        </Button>
-        <Button className="ms-auto" onClick={comprar}>
+      <Card.Footer className="d-flex flex-row justify-content-center align-items-center ">
+        <span className="d-flex flex-row justify-content-center">
+          <Button size="sm" onClick={decreaseQuantity} disabled={quantity <= 1}>
+            -
+          </Button>
+          <span className="rounded border border-primary px-2 mx-1 my-0">
+            {quantity}
+          </span>
+          <Button
+            size="sm"
+            onClick={increaseQuantity}
+            disabled={quantity >= stock}
+          >
+            +
+          </Button>
+        </span>
+        <Button size="sm" className="ms-auto" onClick={comprar}>
           Comprar
         </Button>
       </Card.Footer>

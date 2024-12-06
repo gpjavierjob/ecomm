@@ -2,51 +2,44 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import CartItem from "./CartItem";
 import { useCart } from "../contexts/CartContext";
 import { useToast } from "../contexts/ToastContext";
 
 function Cart() {
-  const { isEmpty, getItems, clear, getTotal } = useCart();
-  const { addInfo } = useToast();
-  const navigate = useNavigate();
+  const { isEmpty, getItems, clear, getTotal, getQuantity } = useCart();
+  const { addSuccess } = useToast();
 
-  const removeAllCartItems = () => clear();
-
-  const buyCartItems = () => clear();
-
-  useEffect(() => {
-    if (isEmpty()) {
-      addInfo("El carrito está vacío.");
-      navigate("/");
-    }
-  }, [getItems()]);
+  const removeAllCartItems = () => {
+    clear();
+    const quantity = getQuantity();
+    addSuccess(
+      quantity == 1
+        ? "Eliminado el producto del carrito."
+        : `Eliminados ${quantity} productos del carrito`
+    );
+  };
 
   return (
-    <Container className="mt-3">
+    <Container className="m-0 p-0">
       {!isEmpty() && (
         <>
           {getItems().map((cartItem) => (
             <CartItem key={cartItem.id} {...cartItem} />
           ))}
-          <Row className="mt-3">
-            <Col md={9} className="text-center text-md-end">
+          <Row className="m-1 px-3 mt-3">
+            <Col xs={6} md={9} className="text-end">
               <b>Total</b>
             </Col>
-            <Col md={2} className="text-center">
-              {getTotal().toFixed(2)}
+            <Col xs={6} md={2} className="text-xs-start text-md-end">
+              ${getTotal().toFixed(2)}
             </Col>
-            <Col md={1}></Col>
+            <Col xs={0} md={1}></Col>
           </Row>
-          <Row className="mt-3">
+          <Row className="m-1 px-3 pt-3 pb-3">
             <Col className="text-center">
-              <Button onClick={removeAllCartItems}>Vaciar</Button>
-            </Col>
-            <Col className="text-center">
-              <Button onClick={buyCartItems}>Comprar</Button>
+              <Button onClick={removeAllCartItems}>Vaciar carrito</Button>
             </Col>
           </Row>
         </>
