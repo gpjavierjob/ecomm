@@ -1,7 +1,7 @@
 import { getDocs, collection, query, orderBy } from "firebase/firestore";
-import { useFirebase } from "./firebase";
+import { useGetFromFirebase } from "./firebase";
 
-function useCategories() {
+function useGetCategories() {
   const getCategories = async (db) => {
     const collectionRef = query(collection(db, "Categories"), orderBy("order"));
     const snapshot = await getDocs(collectionRef);
@@ -11,7 +11,7 @@ function useCategories() {
     return data;
   };
 
-  return useFirebase([], getCategories);
+  return useGetFromFirebase([], getCategories);
 }
 
-export { useCategories };
+export { useGetCategories };

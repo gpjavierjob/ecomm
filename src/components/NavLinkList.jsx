@@ -2,11 +2,11 @@ import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 
-import { useCategories } from "../firebase/categories";
+import { useGetCategories } from "../firebase/categories";
 import { useToast } from "../contexts/ToastContext";
 
 function NavLinkList() {
-  const [categories, loading, error] = useCategories();
+  const [categories, loading, error] = useGetCategories();
   const { addError } = useToast();
 
   useEffect(() => {

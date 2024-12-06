@@ -4,12 +4,12 @@ import { useEffect } from "react";
 
 import ItemList from "./ItemList";
 import Loading from "./Loading";
-import { useProducts } from "../firebase/products";
+import { useGetProducts } from "../firebase/products";
 import { useToast } from "../contexts/ToastContext";
 
 function ItemListContainer() {
   const { tag } = useParams();
-  const [products, loading, error] = useProducts(tag);
+  const [products, loading, error] = useGetProducts(tag);
   const { addError, addInfo } = useToast();
 
   useEffect(() => {

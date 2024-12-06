@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getFirestore } from "firebase/firestore";
 
-function useFirebase(props, callback) {
+function useGetFromFirebase(props, callback) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,4 +27,4 @@ function useFirebase(props, callback) {
   return [data, loading, error];
 }
 
-export { useFirebase };
+export { useGetFromFirebase };

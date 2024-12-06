@@ -7,9 +7,9 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
-import { useFirebase } from "./firebase";
+import { useGetFromFirebase } from "./firebase";
 
-function useProducts(categoryTag) {
+function useGetProducts(categoryTag) {
   const getProducts = async (db) => {
     let collectionRef = collection(db, "Products");
 
@@ -30,17 +30,17 @@ function useProducts(categoryTag) {
     return data;
   };
 
-  return useFirebase([categoryTag], getProducts);
+  return useGetFromFirebase([categoryTag], getProducts);
 }
 
-function useProduct(id) {
+function useGetProduct(id) {
   const getProduct = async (db) => {
     const docRef = doc(db, "Products", id);
     const snapshot = await getDoc(docRef);
     return { id: snapshot.id, ...snapshot.data() };
   };
 
-  return useFirebase([id], getProduct);
+  return useGetFromFirebase([id], getProduct);
 }
 
-export { useProduct, useProducts };
+export { useGetProduct, useGetProducts };

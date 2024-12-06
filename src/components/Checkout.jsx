@@ -10,11 +10,13 @@ import { useCart } from "../contexts/CartContext";
 import { useToast } from "../contexts/ToastContext";
 
 function Checkout() {
-  const [buyer, setBuyer] = useState({
+  const [ buyer, setBuyer ] = useState({
     phone: "",
     email: "",
     name: "",
   });
+  const [ submitted, setSubmitted ] = useState(false);
+  const [ ordered, setOrdered ] = useState(false);
   const { isEmpty, getItems, clear, getTotal } = useCart();
   const { addSuccess, addInfo } = useToast();
   const navigate = useNavigate();
