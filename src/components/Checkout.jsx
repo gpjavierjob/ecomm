@@ -8,43 +8,46 @@ import Cart from "./Cart";
 import CheckoutForm from "./CheckoutForm";
 import { useCart } from "../contexts/CartContext";
 import { useToast } from "../contexts/ToastContext";
+import { useAddOrder } from "../firebase/orders";
 
 function Checkout() {
-  const [ buyer, setBuyer ] = useState({
+  const [buyer, setBuyer] = useState({
     phone: "",
     email: "",
     name: "",
   });
-  const [ submitted, setSubmitted ] = useState(false);
-  const [ ordered, setOrdered ] = useState(false);
+  const [order, working, error, addOrder] = useAddOrder();
   const { isEmpty, getItems, clear, getTotal } = useCart();
-  const { addSuccess, addInfo } = useToast();
+  const { addSuccess, addError, addInfo } = useToast();
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("useEffect");
-    if (isEmpty()) {
-      addInfo("El carrito quedó vacío. Volvemos al inicio.");
-      navigate("/");
-    } else {
-      if (buyer.name === "" || !buyCartItems()) return;
-
+    if (order != null) {
+      // Ordenada la compra
       clear();
       addSuccess("La compra ha sido ordenada. Volvemos al inicio.");
       navigate("/");
+    } else if (error) {
+      // Falló la compra
+      addError("Error inesperado. Intente la compra nuevamente.");
+    } else if (buyer.name !== "" && working === false) {
+      // Solicitada la compra
+      buyCartItems();
+    } else if (isEmpty()) {
+      addInfo("El carrito quedó vacío. Se regresó a inicio.");
+      navigate("/");
     }
-  }, [isEmpty(), buyer]);
+  }, [isEmpty(), buyer, working]);
 
   const buyCartItems = () => {
-    console.log("buyCartItems");
     const order = {
+      date: new Date(),
       buyer: buyer,
       items: getItems(),
       total: getTotal(),
     };
 
-    // useAddOrder(order);
-    return true;
+    addOrder(order);
   };
 
   return (
@@ -55,7 +58,11 @@ function Checkout() {
             <Cart />
           </Col>
           <Col xs={12} lg={4}>
-            <CheckoutForm buyer={buyer} setBuyer={setBuyer} />
+            <CheckoutForm
+              buyer={buyer}
+              setBuyer={setBuyer}
+              disabled={working}
+            />
           </Col>
         </Row>
       )}

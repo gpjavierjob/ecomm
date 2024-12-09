@@ -6,7 +6,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 
-function CheckoutForm({ buyer, setBuyer }) {
+import Fieldset from "./Fieldset";
+
+function CheckoutForm({ buyer, setBuyer, disabled }) {
   const [formBuyer, setFormBuyer] = useState(buyer);
   const [validated, setValidated] = useState(false);
 
@@ -39,50 +41,52 @@ function CheckoutForm({ buyer, setBuyer }) {
             <Form noValidate validated={validated}>
               <Card.Header>Datos del Comprador</Card.Header>
               <Card.Body>
-                <Form.Group className="mb-3">
-                  <Form.Label>Nombre</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Ingrese su nombre"
-                    name="name"
-                    value={formBuyer.name}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Por favor, ingrese su nombre.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Ingrese su email"
-                    name="email"
-                    value={formBuyer.email}
-                    onChange={handleChange}
-                    pattern="^\S+@\S+\.\S+$"
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Por favor, ingrese un email válido.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Teléfono</Form.Label>
-                  <Form.Control
-                    type="tel"
-                    placeholder="Ingrese su teléfono"
-                    name="phone"
-                    value={formBuyer.phone}
-                    onChange={handleChange}
-                    pattern="^\d{10}$"
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Por favor, ingrese un número de teléfono válido.
-                  </Form.Control.Feedback>
-                </Form.Group>
+                <Fieldset disabled={disabled}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Nombre</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Ingrese su nombre"
+                      name="name"
+                      value={formBuyer.name}
+                      onChange={handleChange}
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Por favor, ingrese su nombre.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Ingrese su email"
+                      name="email"
+                      value={formBuyer.email}
+                      onChange={handleChange}
+                      pattern="^\S+@\S+\.\S+$"
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Por favor, ingrese un email válido.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Control
+                      type="tel"
+                      placeholder="Ingrese su teléfono"
+                      name="phone"
+                      value={formBuyer.phone}
+                      onChange={handleChange}
+                      pattern="^\d{10}$"
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Por favor, ingrese un número de teléfono válido.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Fieldset>
               </Card.Body>
               <Card.Footer className="text-center">
                 <Button variant="primary" onClick={handleSubmit}>
