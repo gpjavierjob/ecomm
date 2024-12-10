@@ -29,3 +29,4 @@ src/data
 src/hooks
 src/firebase/config.js
 src/firebase/upload.js
+src/contexts/AppContext.jsx
