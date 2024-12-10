@@ -36,7 +36,7 @@ function CheckoutForm({ buyer, setBuyer, disabled }) {
   return (
     <Container className="m-0 p-0 mt-3 mt-lg-1 mb-3">
       <Row className="justify-content-center">
-        <Col md="8" lg="12" className="">
+        <Col md="8" lg="12">
           <Card>
             <Form noValidate validated={validated}>
               <Card.Header>Datos del Comprador</Card.Header>

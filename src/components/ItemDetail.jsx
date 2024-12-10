@@ -62,7 +62,6 @@ function ItemDetail({
             <Card.Text className="d-flex flex-row align-items-center">
               <span className="d-flex flex-row justify-content-center">
                 <Button
-                  className=""
                   size="sm"
                   onClick={decreaseQuantity}
                   disabled={quantity <= 1}
@@ -73,7 +72,6 @@ function ItemDetail({
                   {quantity}
                 </span>
                 <Button
-                  className=""
                   size="sm"
                   onClick={increaseQuantity}
                   disabled={quantity >= stock}
