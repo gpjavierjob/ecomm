@@ -27,11 +27,9 @@ function CheckoutForm({ buyer, setBuyer, disabled }) {
     const form = e.currentTarget;
 
     if (form.checkValidity() === true) {
-      console.log("Bien", `Validity: ${true}`);
       setBuyer(formBuyer);
     }
 
-    console.log("Mal", `Validity: ${false}`);
     setValidated(true);
   };
 
