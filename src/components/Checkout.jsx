@@ -15,6 +15,7 @@ function Checkout() {
     phone: "",
     email: "",
     name: "",
+    confirmEmail: "",
   });
   const [order, working, error, addOrder] = useAddOrder();
   const { isEmpty, getItems, clear, getTotal } = useCart();

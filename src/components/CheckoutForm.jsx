@@ -4,13 +4,14 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import Fieldset from "./Fieldset";
 
 function CheckoutForm({ buyer, setBuyer, disabled }) {
   const [formBuyer, setFormBuyer] = useState(buyer);
   const [validated, setValidated] = useState(false);
+  const form = useRef();
 
   const handleChange = (e) => {
     setFormBuyer((prev) => ({
@@ -20,17 +21,18 @@ function CheckoutForm({ buyer, setBuyer, disabled }) {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     const form = e.currentTarget;
 
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-      setValidated(true);
-      return;
+    if (form.checkValidity() === true) {
+      console.log("Bien", `Validity: ${true}`);
+      setBuyer(formBuyer);
     }
 
+    console.log("Mal", `Validity: ${false}`);
     setValidated(true);
-    setBuyer(formBuyer);
   };
 
   return (
@@ -38,7 +40,12 @@ function CheckoutForm({ buyer, setBuyer, disabled }) {
       <Row className="justify-content-center">
         <Col md="8" lg="12">
           <Card>
-            <Form noValidate validated={validated}>
+            <Form
+              ref={form}
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+            >
               <Card.Header>Datos del Comprador</Card.Header>
               <Card.Body>
                 <Fieldset disabled={disabled}>
@@ -57,6 +64,21 @@ function CheckoutForm({ buyer, setBuyer, disabled }) {
                     </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className="mb-3">
+                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Control
+                      type="tel"
+                      placeholder="Ingrese su teléfono"
+                      name="phone"
+                      value={formBuyer.phone}
+                      onChange={handleChange}
+                      pattern="^\d{9}$"
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Por favor, ingrese un número de teléfono válido.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="email"
@@ -72,24 +94,24 @@ function CheckoutForm({ buyer, setBuyer, disabled }) {
                     </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Label>Confirmación de email</Form.Label>
                     <Form.Control
-                      type="tel"
-                      placeholder="Ingrese su teléfono"
-                      name="phone"
-                      value={formBuyer.phone}
+                      type="email"
+                      placeholder="Confirme su email"
+                      name="confirmEmail"
+                      value={formBuyer.confirmEmail}
                       onChange={handleChange}
-                      pattern="^\d{10}$"
+                      pattern={formBuyer.email}
                       required
                     />
                     <Form.Control.Feedback type="invalid">
-                      Por favor, ingrese un número de teléfono válido.
+                      El valor proporcionado no coincide con el email.
                     </Form.Control.Feedback>
                   </Form.Group>
                 </Fieldset>
               </Card.Body>
               <Card.Footer className="text-center">
-                <Button variant="primary" onClick={handleSubmit}>
+                <Button variant="primary" type="submit">
                   Comprar
                 </Button>
               </Card.Footer>
