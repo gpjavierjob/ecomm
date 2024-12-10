@@ -25,7 +25,7 @@ function Checkout() {
     if (order != null) {
       // Ordenada la compra
       clear();
-      addSuccess("La compra ha sido ordenada. Volvemos al inicio.");
+      addSuccess(`La compra ha sido ordenada. El ID de la orden es: ${order.id}.`, false);
       navigate("/");
     } else if (error) {
       // Falló la compra

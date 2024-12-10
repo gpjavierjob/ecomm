@@ -15,25 +15,25 @@ export const ToastContextProvider = ({ children }) => {
 
   const delay = import.meta.env.VITE_TOASTS_DELAY;
 
-  const addToast = (title, message, image, variant = "primary") => {
+  const addToast = (title, message, image, variant = "primary", autoHide=false) => {
     variant = variant.toLowerCase();
     setToasts((prevToasts) => [
       ...prevToasts,
-      { id: Date.now(), title, message, image, variant },
+      { id: Date.now(), title, message, image, variant, autoHide },
     ]);
   };
 
-  const addSuccess = (message) =>
-    addToast("Éxito", message, <BsCheckCircle />, "success");
+  const addSuccess = (message, autoHide=true) =>
+    addToast("Éxito", message, <BsCheckCircle />, "success", autoHide);
 
-  const addInfo = (message) =>
-    addToast("Información", message, <BsInfoCircle />, "info");
+  const addInfo = (message, autoHide=true) =>
+    addToast("Información", message, <BsInfoCircle />, "info", autoHide);
 
-  const addWarning = (message) =>
-    addToast("Aviso", message, <BsExclamationCircle />, "warning");
+  const addWarning = (message, autoHide=true) =>
+    addToast("Aviso", message, <BsExclamationCircle />, "warning", autoHide);
 
-  const addError = (message) =>
-    addToast("Error", message, <BsXCircle />, "danger");
+  const addError = (message, autoHide=true) =>
+    addToast("Error", message, <BsXCircle />, "danger", autoHide);
 
   const removeToast = (id) => {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
@@ -45,12 +45,12 @@ export const ToastContextProvider = ({ children }) => {
     >
       {children}
       <ToastContainer position="top-end" className="p-3">
-        {toasts.map(({ id, title, message, image, variant }) => (
+        {toasts.map(({ id, title, message, image, variant, autoHide }) => (
           <Toast
             key={id}
             onClose={() => removeToast(id)}
             delay={delay}
-            autohide
+            autohide={autoHide}
             bg={variant}
           >
             <Toast.Header>
