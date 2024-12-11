@@ -15,16 +15,20 @@ Aplicación web para la venta de productos agropecuarios.
 - Adición de productos al carrito de compras.  
 - Solicitud de información básica del usuario para procesar pedidos.  
 - Generación de una orden de compra única.  
-- Envío de un correo electrónico al usuario con el ID de la orden utilizando la dirección de correo proporcionada.  
+- Notificación al usuario con el ID de la orden de compra.  
 
 ## Instalación y ejecución
+
+**Nota:** Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu máquina:  
+- [Git](https://git-scm.com/)  
+- [Node.js y npm](https://nodejs.org/) (npm se incluye automáticamente con Node.js).  
 
 Sigue estos pasos para instalar y ejecutar el proyecto en tu máquina local:
 
 1. Clona este repositorio:  
    ```bash
-   git clone https://github.com/tu_usuario/verduleria-uy.git
-   cd verduleria-uy
+   git clone https://github.com/gpjavierjob/ecomm.git
+   cd ecomm
 
 2. Instala las dependencias:  
    ```bash
