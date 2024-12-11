@@ -35,7 +35,7 @@ function Checkout() {
       // Solicitada la compra
       buyCartItems();
     } else if (isEmpty()) {
-      addInfo("El carrito quedó vacío. Se regresó a inicio.");
+      addInfo("El carrito quedó vacío. Se regresó a Inicio.");
       navigate("/");
     }
   }, [isEmpty(), buyer, working]);
