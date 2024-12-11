@@ -41,9 +41,10 @@ function Checkout() {
   }, [isEmpty(), buyer, working]);
 
   const buyCartItems = () => {
+    const { confirmEmail, ...buyerWithoutConfirmEmail } = buyer;
     const order = {
       date: new Date(),
-      buyer: buyer,
+      buyer: buyerWithoutConfirmEmail,
       items: getItems(),
       total: getTotal(),
     };
